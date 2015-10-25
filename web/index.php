@@ -17,6 +17,7 @@ require __DIR__ . '/../vendor/autoload.php';
 $scheduleID = getenv('PAGERDUTY_SCHEDULE_ID');
 $APItoken   = getenv('PAGERDUTY_API_TOKEN');
 $domain     = getenv('PAGERDUTY_DOMAIN');
+$callerID   = getenv('OUTBOUND_CALLERID');
 
 // Should we announce the local time of the on-call person?
 // (helps raise awareness you might be getting somebody out of bed)
@@ -32,7 +33,8 @@ if (null !== $userID) {
 
     $attributes = array(
         'voice' => 'alice',
-        'language' => 'en-AU'
+        'language' => 'en-AU',
+        'callerID' => $callerID
     );
 
     $time = "";
